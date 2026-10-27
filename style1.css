@@ -4378,7 +4378,7 @@ body.dark .navbar {
     /* UI Design */
     .card-one {
         top: 28px;
-        left: 0;
+        left: 10%;
         right: auto;
         bottom: auto;
         transform: none;
