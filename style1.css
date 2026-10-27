@@ -747,7 +747,7 @@ body.dark .navbar {
 .card-one {
     top: 4%;
     left: 50%;
-    animation-name: cardFloatCenter;
+    animation-name: -1s;
 }
 
 .card-two {
@@ -773,6 +773,7 @@ body.dark .navbar {
     right: 3%;
     animation-delay: -1.5s;
 }
+
 
 /* ==========================================
    ANIMATIONS
@@ -4253,111 +4254,9 @@ body.dark .navbar {
    Add this at the END of style.css
 ========================================= */
 
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    width: 100%;
-}
-
-.nav-container {
-    position: relative;
-    width: min(1400px, calc(100% - 40px));
-    min-height: 80px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-}
-
-/* Logo */
-.logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-/* Desktop navigation */
-.nav-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(14px, 2vw, 30px);
-}
-
-/* Right-side action */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-shrink: 0;
-}
-
-.connect-btn {
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    white-space: nowrap;
-    text-decoration: none;
-}
-
-/* Hidden on desktop */
-.menu-btn {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
 /* =========================================
-   HERO DESKTOP BASE
+   TABLET + MOBILE NAVBAR
 ========================================= */
-
-.hero-container {
-    width: min(1400px, calc(100% - 40px));
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-    gap: clamp(24px, 5vw, 70px);
-}
-
-.hero-content {
-    min-width: 0;
-}
-
-.hero-visual {
-    position: relative;
-    width: 100%;
-    min-width: 0;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.portfolio-hero-image {
-    display: block;
-    width: 100%;
-    max-width: 440px;
-    height: auto;
-    object-fit: contain;
-}
-
-/* Floating cards */
-.floating-card {
-    position: absolute;
-    z-index: 2;
-    max-width: 45%;
-    overflow-wrap: anywhere;
-}
-
 /* =========================================
    TABLET + MOBILE NAVBAR
 ========================================= */
@@ -4499,6 +4398,7 @@ body.dark .navbar {
         margin-right: auto;
     }
 
+    /* Floating cards */
     .floating-card {
         position: absolute;
         max-width: 40%;
@@ -4506,6 +4406,7 @@ body.dark .navbar {
         overflow-wrap: anywhere;
     }
 }
+
 
 /* =========================================
    MOBILE
@@ -4619,7 +4520,7 @@ body.dark .navbar {
         margin-right: auto;
     }
 
-    /* Floating cards */
+    /* Floating cards - animation enabled */
     .floating-card {
         position: absolute;
         width: max-content;
@@ -4632,7 +4533,10 @@ body.dark .navbar {
         overflow-wrap: anywhere;
         white-space: normal;
         z-index: 5;
-        animation: none;
+
+        /* Animate cards without overriding positioning */
+        animation: mobileCardFloat 3.5s ease-in-out infinite !important;
+        will-change: translate;
     }
 
     /* UI Design - top left */
@@ -4643,7 +4547,8 @@ body.dark .navbar {
         bottom: auto;
         margin: 0 !important;
         transform: none !important;
-        translate: none !important;
+        translate: 0 0;
+        animation-delay: 0s;
     }
 
     /* User Research - top right */
@@ -4653,8 +4558,9 @@ body.dark .navbar {
         left: auto !important;
         bottom: auto;
         margin: 0;
-        transform: none;
+        transform: none !important;
         max-width: 42%;
+        animation-delay: -0.7s;
     }
 
     /* Wireframing - bottom left */
@@ -4664,8 +4570,9 @@ body.dark .navbar {
         bottom: 8%;
         top: auto;
         margin: 0;
-        transform: none;
+        transform: none !important;
         max-width: 42%;
+        animation-delay: -1.4s;
     }
 
     /* Prototyping - bottom right */
@@ -4675,8 +4582,9 @@ body.dark .navbar {
         bottom: 10%;
         top: auto;
         margin: 0;
-        transform: none;
+        transform: none !important;
         max-width: 42%;
+        animation-delay: -2.1s;
     }
 
     /* UX Thinking - bottom center */
@@ -4688,8 +4596,10 @@ body.dark .navbar {
         margin: 0;
         transform: translateX(-50%) !important;
         max-width: 46%;
+        animation-delay: -2.8s;
     }
 }
+
 
 /* =========================================
    SMALL PHONES
@@ -4741,6 +4651,9 @@ body.dark .navbar {
         max-width: 40%;
         padding: 7px;
         font-size: 10px;
+
+        /* Keep animation active on small phones */
+        animation: mobileCardFloat 3.5s ease-in-out infinite !important;
     }
 
     .hero-visual .card-one {
@@ -4759,6 +4672,24 @@ body.dark .navbar {
         right: 5px !important;
     }
 }
+
+
+/* =========================================
+   FLOATING CARD ANIMATION
+   Add outside all media queries
+========================================= */
+
+@keyframes mobileCardFloat {
+    0%,
+    100% {
+        translate: 0 0;
+    }
+
+    50% {
+        translate: 0 -10px;
+    }
+}
+
 
 /* =========================================
    PREVENT HORIZONTAL PAGE OVERFLOW
