@@ -4315,128 +4315,331 @@ body.dark .navbar {
     cursor: pointer;
 }
 
-/* ===== MOBILE HERO VISUAL FIX ===== */
+/* =========================================
+   HERO DESKTOP BASE
+========================================= */
+
+.hero-container {
+    width: min(1400px, calc(100% - 40px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(24px, 5vw, 70px);
+}
+
+.hero-content {
+    min-width: 0;
+}
+
+.hero-visual {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio-hero-image {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Floating cards */
+.floating-card {
+    position: absolute;
+    z-index: 2;
+    max-width: 45%;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   TABLET + MOBILE NAVBAR
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .nav-container {
+        width: calc(100% - 32px);
+        min-height: 76px;
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr) auto;
+        grid-template-areas: "menu logo connect";
+        column-gap: 12px;
+    }
+
+    /* Exact order: menu | logo | connect */
+    .menu-btn {
+        grid-area: menu;
+        display: inline-flex !important;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        font-size: 24px;
+    }
+
+    .logo {
+        grid-area: logo;
+        justify-self: start;
+        min-width: 0;
+        font-size: clamp(15px, 2.5vw, 20px);
+    }
+
+    .nav-actions {
+        grid-area: connect;
+        display: flex !important;
+        justify-self: end;
+        min-width: 0;
+    }
+
+    .connect-btn {
+        display: inline-flex !important;
+        padding: 11px 14px;
+        gap: 6px;
+        font-size: 13px;
+    }
+
+    /* Dropdown navigation */
+    .nav-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        z-index: 1001;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 10px;
+        border-radius: 16px;
+        background: var(--background, #ffffff);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition:
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            visibility 0.2s ease;
+    }
+
+    .nav-menu.open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .nav-menu .nav-link {
+        display: block;
+        width: 100%;
+        padding: 13px 15px;
+        border-radius: 8px;
+    }
+
+    /* Stack hero content and visual */
+    .hero-container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .hero-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+        min-height: 420px;
+        margin: 0 auto;
+    }
+
+    .portfolio-hero-image {
+        width: min(76%, 370px);
+        max-height: 420px;
+    }
+
+    .floating-card {
+        max-width: 40%;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 600px) {
 
-    .hero {
-        overflow: hidden;
-        padding: 95px 12px 30px;
+    .nav-container {
+        width: calc(100% - 24px);
+        min-height: 68px;
+        grid-template-columns: 34px minmax(0, 1fr) auto;
+        column-gap: 8px;
     }
 
+    .menu-btn {
+        width: 34px;
+        height: 38px;
+        font-size: 22px;
+    }
+
+    .logo {
+        gap: 5px;
+        font-size: 15px;
+    }
+
+    .logo span {
+        flex-shrink: 0;
+    }
+
+    /* Keep the button visible at the right */
+    .nav-actions {
+        display: flex !important;
+        min-width: 0;
+    }
+
+    .connect-btn {
+        display: inline-flex !important;
+        padding: 9px 10px;
+        gap: 4px;
+        font-size: 11px;
+        border-radius: 999px;
+    }
+
+    .connect-btn i {
+        font-size: 13px;
+    }
+
+    /* Hero */
     .hero-container {
-        width: 100%;
-        grid-template-columns: 1fr;
+        width: calc(100% - 32px);
         gap: 10px;
     }
 
+    .hero-content {
+        text-align: center;
+    }
+
     .hero-visual {
         width: 100%;
-        max-width: 420px;
-        min-height: 390px;
-        height: auto;
-        margin: 0 auto;
-        position: relative;
+        min-height: 340px;
         overflow: visible;
     }
 
-    /* Main hero image */
-    .hero-visual img {
-        max-width: 100%;
-        height: auto;
-        object-fit: contain;
+    .portfolio-hero-image {
+        width: min(74%, 300px);
+        max-height: 340px;
     }
 
-    .hero-image {
-        width: 82%;
-        max-width: 320px;
-        position: relative;
-        margin: 35px auto 0;
-    }
-
-    .hero-image img {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-
-    /* Floating skill cards */
+    /* Keep cards within the visual area */
     .floating-card {
-        position: absolute;
-        width: fit-content;
-        max-width: 145px;
-        padding: 10px 12px;
-        font-size: 12px;
-        line-height: 1.3;
-        border-radius: 15px;
-        z-index: 5;
-        white-space: normal;
-        box-sizing: border-box;
-        animation: none;
+        max-width: 39%;
+        padding: 9px 10px;
+        font-size: 11px;
+        border-radius: 12px;
     }
 
-    /* UI Design */
     .card-one {
-        top: 28px;
-        left: 10%;
+        top: 10%;
+        left: 12%;
         right: auto;
         bottom: auto;
-        transform: none;
     }
 
-    /* User Research */
     .card-two {
-        top: 28px;
+        top: 10%;
         right: 0;
         left: auto;
         bottom: auto;
-        transform: none;
     }
 
-    /* Wireframing */
     .card-three {
-        bottom: 55px;
         left: 0;
+        bottom: 8%;
         right: auto;
         top: auto;
-        transform: none;
     }
 
-    /* Prototyping */
     .card-four {
-        bottom: 65px;
         right: 0;
+        bottom: 10%;
         left: auto;
         top: auto;
-        transform: none;
     }
 
-    /* UX Thinking */
     .card-five {
+        right: 50%;
         bottom: 0;
-        left: 50%;
-        right: auto;
+        left: auto;
         top: auto;
-        transform: translateX(-50%);
+        transform: translateX(50%);
+        max-width: 46%;
     }
 }
 
-/* ===== EXTRA-SMALL MOBILE SCREENS ===== */
+/* =========================================
+   SMALL PHONES
+========================================= */
 
 @media (max-width: 380px) {
 
+    .nav-container {
+        width: calc(100% - 16px);
+        grid-template-columns: 30px minmax(0, 1fr) auto;
+        column-gap: 6px;
+    }
+
+    .menu-btn {
+        width: 30px;
+        font-size: 20px;
+    }
+
+    .logo {
+        font-size: 13px;
+    }
+
+    .connect-btn {
+        padding: 8px 8px;
+        font-size: 10px;
+    }
+
+    .hero-container {
+        width: calc(100% - 24px);
+    }
+
     .hero-visual {
-        min-height: 350px;
+        min-height: 300px;
+    }
+
+    .portfolio-hero-image {
+        width: 72%;
     }
 
     .floating-card {
-        max-width: 125px;
-        padding: 8px 9px;
-        font-size: 11px;
-    }
-
-    .hero-image {
-        width: 78%;
-        margin-top: 40px;
+        max-width: 40%;
+        padding: 7px;
+        font-size: 10px;
     }
 }
+
+/* Prevent accidental horizontal scrolling */
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+.hero-container > *,
+.hero-visual > * {
+    min-width: 0;
+}
+
