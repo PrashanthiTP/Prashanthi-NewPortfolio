@@ -484,7 +484,7 @@ body.dark .navbar {
 .hero {
     background: #edf3ff;
     min-height: 60vh;
-    padding:  60px 0 50px;
+    padding:  100px 0 50px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -684,11 +684,12 @@ body.dark .navbar {
 .hero-visual {
     position: relative;
     isolation: isolate;
-    width: 600%;
+    width: 100%;
     min-width: 0;
     min-height: 600px;
     display: grid;
     place-items: center;
+    overflow: visible;
     animation: heroVisual 1.2s .15s ease both;
 }
 
@@ -2129,119 +2130,76 @@ body.dark .navbar {
     box-sizing: border-box;
 }
 
-/* =========================================
-   PROJECT FILTERS - BASE STYLES
-========================================= */
-
-.project-filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    margin: 0 auto 35px;
-}
-
-/* Filter buttons */
 .filter-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    min-height: 46px;
-    padding: 0 20px;
-
+    min-height: 48px;
+    padding: 0 22px;
     border: 1px solid #d7dce6;
     border-radius: 50px;
     background: #ffffff;
-
     font-family: "DM Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
     color: #252b38;
     white-space: nowrap;
-
     cursor: pointer;
-
     transition:
         background 0.3s ease,
         color 0.3s ease,
         border-color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.3s ease;
 }
 
-/* Hover effect */
 .filter-btn:hover {
     border-color: #3520e1;
     color: #3520e1;
     transform: translateY(-2px);
 }
 
-/* Active filter */
 .filter-btn.active {
     color: #ffffff;
     border-color: transparent;
     background: linear-gradient(
         100deg,
-        #1823b8,
-        #0875d1,
+        #1800d5,
         #00bde9
     );
-    box-shadow: 0 5px 14px rgba(24, 35, 184, 0.18);
 }
 
-/* Keyboard accessibility */
-.filter-btn:focus-visible,
-.view-all-btn:focus-visible {
-    outline: 3px solid rgba(8, 117, 209, 0.35);
-    outline-offset: 3px;
-}
-
-
-/* =========================================
-   VIEW ALL PROJECTS BUTTON
-========================================= */
+/* View All Projects */
 
 .view-all-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-
     flex-shrink: 0;
-    min-height: 46px;
+    min-height: 48px;
     padding: 0 20px;
     margin-left: auto;
-
     border: none;
-    border-radius: 50px;
-
+    border-radius: 11px;
     background: linear-gradient(
         100deg,
         #3520e1,
         #3446f5,
         #0d6df0
     );
-
     color: #ffffff;
     text-decoration: none;
-
     font-family: "DM Sans", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     white-space: nowrap;
-
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
 .view-all-btn i {
-    font-size: 19px;
+    font-size: 20px;
     transition: transform 0.3s ease;
 }
 
@@ -2252,115 +2210,6 @@ body.dark .navbar {
 
 .view-all-btn:hover i {
     transform: translateX(4px);
-}
-
-
-/* =========================================
-   TABLET RESPONSIVE
-========================================= */
-
-@media (max-width: 1000px) {
-
-    .project-filters {
-        justify-content: center;
-        gap: 10px;
-        padding: 0 16px;
-        margin-bottom: 28px;
-    }
-
-    .filter-btn {
-        min-height: 42px;
-        padding: 0 16px;
-        font-size: 13px;
-    }
-
-    .view-all-btn {
-        min-height: 42px;
-        padding: 0 17px;
-        margin-left: 0;
-        font-size: 13px;
-    }
-}
-
-
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .project-filters {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 9px;
-
-        width: 100%;
-        padding: 0 12px;
-        margin: 0 auto 25px;
-
-        box-sizing: border-box;
-    }
-
-    .filter-btn {
-        min-height: 38px;
-        padding: 0 13px;
-        font-size: 12px;
-        line-height: 1.2;
-        border-radius: 50px;
-    }
-
-    .filter-btn:hover {
-        transform: none;
-    }
-
-    .view-all-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-
-        min-height: 40px;
-        padding: 0 15px;
-        margin: 4px 0 0;
-
-        font-size: 12px;
-        border-radius: 50px;
-    }
-
-    .view-all-btn i {
-        font-size: 17px;
-    }
-}
-
-
-/* =========================================
-   SMALL PHONES
-========================================= */
-
-@media (max-width: 380px) {
-
-    .project-filters {
-        gap: 7px;
-        padding: 0 8px;
-    }
-
-    .filter-btn {
-        min-height: 35px;
-        padding: 0 10px;
-        font-size: 11px;
-    }
-
-    .view-all-btn {
-        min-height: 37px;
-        padding: 0 13px;
-        font-size: 11px;
-    }
-
-    .view-all-btn i {
-        font-size: 16px;
-    }
 }
 
 /* =====================================================
