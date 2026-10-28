@@ -604,7 +604,7 @@ body.dark .navbar {
     min-height: 48px;
     padding: 0 22px;
     border: 1px solid transparent;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
@@ -890,6 +890,7 @@ body.dark .navbar {
         padding: 10px 14px;
         gap: 5px;
         font-size: 12px;
+        border-radius: 14px;
     }
 
     /* Mobile dropdown menu */
@@ -1066,7 +1067,7 @@ body.dark .navbar {
     .secondary-btn {
         min-height: 44px;
         padding: 0 14px;
-        border-radius: 9px;
+        border-radius: 8px;
         font-size: 12px;
     }
 
@@ -2211,7 +2212,109 @@ body.dark .navbar {
 .view-all-btn:hover i {
     transform: translateX(4px);
 }
+/* =================================
+   PROJECT FILTERS - RESPONSIVE CSS
+================================= */
 
+/* Tablets and smaller laptops */
+@media (max-width: 768px) {
+    .project-filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 100%;
+        margin: 25px 0 30px;
+    }
+
+    .filter-btn {
+        width: fit-content;
+        min-width: 0;
+        min-height: 40px;
+        padding: 8px 14px;
+        font-size: 14px;
+        border-radius: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .view-all-btn {
+        width: fit-content;
+        min-height: 40px;
+        padding: 8px 14px;
+        margin-left: 0;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    .project-filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+        margin: 22px 0 28px;
+    }
+
+    .filter-btn {
+        display: inline-flex;
+        width: fit-content;
+        min-width: 0;
+        min-height: 36px;
+        padding: 7px 10px;
+        font-size: 12px;
+        line-height: 1.3;
+        white-space: nowrap;
+        flex-shrink: 0;
+        border-radius: 6px;
+        transform: none;
+    }
+
+    .filter-btn:hover {
+        transform: none;
+    }
+
+    .view-all-btn {
+        display: inline-flex;
+        width: fit-content;
+        min-height: 38px;
+        margin-left: 0;
+        padding: 8px 12px;
+        font-size: 12px;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    .view-all-btn i {
+        font-size: 16px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+    .project-filters {
+        gap: 6px;
+    }
+
+    .filter-btn {
+        min-height: 34px;
+        padding: 6px 8px;
+        font-size: 11px;
+        border-radius: 5px;
+    }
+
+    .view-all-btn {
+        min-height: 36px;
+        padding: 7px 10px;
+        font-size: 11px;
+        border-radius: 5px;
+    }
+}
 /* =====================================================
    PROJECT GRID
 ===================================================== */
