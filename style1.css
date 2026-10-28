@@ -676,7 +676,51 @@ body.dark .navbar {
     border-color: transparent;
     transform: translateY(-3px);
 }
+/* Hero Buttons & Social Links - Mobile Responsive */
+@media (max-width: 600px) {
 
+    .hero-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        width: 100%;
+        margin-top: 28px;
+        text-align: center;
+    }
+
+    @media (max-width: 600px) {
+    .hero-social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 12px;
+        width: 100%;
+        margin-top: 28px;
+    }
+
+    .hero-social span {
+        width: auto;
+        margin-bottom: 0;
+        white-space: nowrap;
+    }
+
+    .hero-social a {
+        flex-shrink: 0;
+    }
+}
+}
 /* ==========================================
    HERO IMAGE AND FLOATING CARDS
 ========================================== */
